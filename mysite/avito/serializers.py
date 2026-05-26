@@ -1,6 +1,6 @@
-from .models import (UserProfile, Category,
-                     SubCategory, Product, Review, ProductImage,
-                     Cart, CartItem, FavoriteItem, Favorite)
+from mysite.models import (UserProfile, Category,
+                           SubCategory, Product, Review, ProductImage,
+                           Cart, CartItem, FavoriteItem, Favorite)
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 

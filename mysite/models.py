@@ -70,7 +70,7 @@ class ProductImage(models.Model):
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
     user =  models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    stars = models.PositiveSmallIntegerField(choices=[(i, str(i)) for i in range(1, 6)], null=True, blank=True)
+    stars = models.PositiveSmallIntegerField(choices=[(i, str(i)) for i in range(1, 11)], null=True, blank=True)
     comment = models.TextField(null=True, blank=True)
     created_date = models.DateField(auto_now_add=True)
 
@@ -97,8 +97,3 @@ class Favorite(models.Model):
 class FavoriteItem(models.Model):
     favorite = models.ForeignKey(Favorite, on_delete=models.CASCADE, related_name='favorite_item')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-
-
-
-
-

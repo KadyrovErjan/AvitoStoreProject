@@ -1,12 +1,11 @@
 from .serializers import (UserProfileSerializer, CategoryListSerializer, CategoryDetailSerializer,
                           SubCategoryListSerializer, ProductListSerializer, ProductDetailSerializer,
-                          ProductImageSerializer, ReviewSerializer, SubCategoryDetailSerializer,
+                          ReviewSerializer, SubCategoryDetailSerializer,
                           RegisterSerializer, CustomLoginSerializer, LogoutSerializer,
                           CartSerializer, CartItemSerializer, FavoriteSerializer, FavoriteItemSerializer)
 
-from .models import (UserProfile, Category,
-                     SubCategory, Product, Review, ProductImage,
-                     Cart, CartItem, Favorite, FavoriteItem)
+from mysite.models import (UserProfile, Category,
+                           SubCategory, Product, Review, Cart, CartItem, Favorite, FavoriteItem)
 from rest_framework import viewsets, generics, permissions, status, serializers
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import ProductFilter
