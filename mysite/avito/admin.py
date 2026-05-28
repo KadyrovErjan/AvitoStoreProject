@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mysite.models import Category, SubCategory, Product, UserProfile, ProductImage, Review, Cart, CartItem, FavoriteItem, Favorite
+from .models import Category, SubCategory, Product, UserProfile, ProductImage, Review, Cart, CartItem, FavoriteItem, Favorite
 from modeltranslation.admin import TranslationAdmin
 
 class ProductImageInline(admin.TabularInline):

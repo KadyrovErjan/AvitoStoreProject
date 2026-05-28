@@ -1,6 +1,6 @@
-from mysite.models import (UserProfile, Category,
-                           SubCategory, Product, Review, ProductImage,
-                           Cart, CartItem, FavoriteItem, Favorite)
+from .models import (UserProfile, Category,
+                                 SubCategory, Product, Review, ProductImage,
+                                 Cart, CartItem, FavoriteItem, Favorite)
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -139,7 +139,7 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         return obj.get_avg_rating()
 
     def get_count_people(self, obj):
-        return obj.get_count_people
+        return obj.get_count_people()
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:

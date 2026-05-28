@@ -1,4 +1,4 @@
-from mysite.models import Product, Category, SubCategory
+from .models import Product, Category, SubCategory
 from modeltranslation.translator import TranslationOptions,register
 
 @register(Category)

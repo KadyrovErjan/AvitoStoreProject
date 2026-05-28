@@ -3,9 +3,10 @@ from .serializers import (UserProfileSerializer, CategoryListSerializer, Categor
                           ReviewSerializer, SubCategoryDetailSerializer,
                           RegisterSerializer, CustomLoginSerializer, LogoutSerializer,
                           CartSerializer, CartItemSerializer, FavoriteSerializer, FavoriteItemSerializer)
+from django.contrib.auth.models import AnonymousUser
 
-from mysite.models import (UserProfile, Category,
-                           SubCategory, Product, Review, Cart, CartItem, Favorite, FavoriteItem)
+from .models import (UserProfile, Category,
+                                 SubCategory, Product, Review, Cart, CartItem, Favorite, FavoriteItem)
 from rest_framework import viewsets, generics, permissions, status, serializers
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import ProductFilter
@@ -109,9 +110,10 @@ class CartItemViewSet(viewsets.ModelViewSet):
     serializer_class = CartItemSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-
-
     def get_queryset(self):
+        if isinstance(self.request.user, AnonymousUser):
+            return CartItem.objects.none()
+
         return CartItem.objects.filter(cart__user=self.request.user)
 
     def perform_create(self, serializer):
@@ -138,6 +140,9 @@ class FavoriteItemViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
+        if isinstance(self.request.user, AnonymousUser):
+            return FavoriteItem.objects.none()
+
         return FavoriteItem.objects.filter(favorite__user=self.request.user)
 
 
